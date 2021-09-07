@@ -1,0 +1,42 @@
+{
+	"inventory": [
+		 
+			{
+				"type":"rice",
+				"name":"basmati",
+				"weight": 40.0,
+				"pricePerKg": 70.0
+			},
+			{
+				"type": "rice",
+				"name": "sonamasoori",
+				"weight": 200.0,
+				"pricePerKg": 50.0
+			},
+			{
+				"type": "wheat",
+				"name": "royal",
+				"weight": 100.0,
+				"pricePerKg": 70.0
+			},
+			{
+				"type": "wheat",
+				"name": "standard",
+				"weight": 50.0,
+				"pricePerKg": 50.0
+			},
+			{
+				"type": "pulses",
+				"name": "moongdal",
+				"weight": 19.0,
+				"pricePerKg": 70.0
+			},
+			{
+				"type": "pulses",
+				"name": "uraddal",
+				"weight": 19.0,
+				"pricePerKg": 50.0
+			}
+		]
+
+}
