@@ -1,78 +1,68 @@
 package Deck;
 
-import java.util.ArrayList;
 import java.util.Collections;
+
+import java.util.*;
 
 public class Deck {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		DeckOfCard deck = new DeckOfCard();
-		ArrayList<Card> cards = deck.getCards();
-		int players = 4;
-		int numOfCards = 9;
-		int index = 0;
-		for (int i = 1; i <= players; i++) {
-			System.out.println("player" + i);
-			for (int j = 1; j <= numOfCards; j++) {
-				System.out.println(cards.get(index++));
+		Deck1 deck = new Deck1();
+		String[] arr = deck.getCards();
+		distributeCards(arr, 4, 9);
+	}
+
+	/*
+	 * method to distribute cards among players
+	 */
+	public static void distributeCards(String[] arr, int numOfPlayer, int numOfCards) {
+
+		String[][] array = new String[numOfPlayer][numOfCards];
+		int k = 0;
+
+		for (int i = 0; i < numOfPlayer; i++) {
+			System.out.println("\nPlayer " + (i + 1));
+			for (int j = 0; j < numOfCards; j++) {
+
+				array[i][j] = arr[k++];
+				System.out.println(array[i][j]);
 			}
 		}
 	}
-
 }
 
-class Card {
+class Deck1 {
 
-	private final String suit;
-	private final String rank;
-
-	public Card(String suit, String rank) {
-		this.suit = suit;
-		this.rank = rank;
-	}
-
-	@Override
-	public String toString() {
-		return "Card [suit=" + suit + ", rank=" + rank + "]";
-	}
-
-}
-
-class DeckOfCard {
-
-	private static final String suits[] = { "clubs", "diamonds", "hearts", "spades" };
-	private static final String ranks[] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king",
-			"ace" };
-	private final ArrayList<Card> cards;
+	private static final String suits[] = { "Club", "Diamond", "Heart", "Spade" };
+	private static final String ranks[] = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen",
+			"King" };
+	private String[] cards = new String[52];
 
 	/*
-	 * method to create new cards and shuffle
+	 * initialise and shuffle cards
 	 */
-	public DeckOfCard() {
-		cards = new ArrayList<Card>();
+	public Deck1() {
+		int k = 0;
 		for (int i = 0; i < suits.length; i++) {
 			for (int j = 0; j < ranks.length; j++) {
-				this.cards.add(new Card(suits[i], ranks[j]));
+				cards[k++] = suits[i] + " - " + ranks[j];
 			}
 		}
 
-		for (int i = 0; i < cards.size(); i++) {
-			int index = (int) (Math.random() * cards.size());
-			Card card1 = cards.get(i);
-			Card card2 = cards.get(index);
-			cards.set(i, card2);
-			cards.set(index, card1);
-
+		for (int i = 0; i < 52; i++) {
+			int index = (int) (Math.random() * k);
+			String temp1 = cards[i];
+			String temp2 = cards[index];
+			cards[index] = temp1;
+			cards[i] = temp2;
 		}
 
 	}
 
 	/*
-	 * method to return list of cards
+	 * method to return cards
 	 */
-	public ArrayList<Card> getCards() {
+	public String[] getCards() {
 		return cards;
 	}
-
 }
