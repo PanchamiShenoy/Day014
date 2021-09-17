@@ -23,7 +23,7 @@ public class StockMain {
 			while (itr.hasNext()) {
 				JSONObject stock = itr.next();
 				String stockName = (String) stock.get("name");
-				double numberOfShares = (double) stock.get("no_of_shares");
+				long numberOfShares = (long) stock.get("no_of_shares");
 				double sharePrice = (double) stock.get("price");
 				Stock newStock = new Stock(stockName, numberOfShares, sharePrice);
 				portfolio.addStock(newStock);
