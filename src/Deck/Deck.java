@@ -9,26 +9,25 @@ public class Deck {
 	public static void main(String[] args) {
 		Deck1 deck = new Deck1();
 		String[] arr = deck.getCards();
-		distributeCards(arr, 4, 9);
-	}
-
-	/*
-	 * method to distribute cards among players
-	 */
-	public static void distributeCards(String[] arr, int numOfPlayer, int numOfCards) {
-
-		String[][] array = new String[numOfPlayer][numOfCards];
-		int k = 0;
-
-		for (int i = 0; i < numOfPlayer; i++) {
-			System.out.println("\nPlayer " + (i + 1));
-			for (int j = 0; j < numOfCards; j++) {
-
-				array[i][j] = arr[k++];
-				System.out.println(array[i][j]);
+		Players player[] = new Players[4];
+		ArrayList<Integer> cardList = new ArrayList<Integer>();
+		for (int i = 0; i < 4; i++) {
+			System.out.println("\nPlayer " + (i + 1) + " cards:");
+			player[i] = new Players();
+			int cardCount = 0;
+			while (cardCount < 9) {
+				int randomValue = (int) (Math.random() * arr.length);
+				if (cardList.contains(randomValue) == false) {
+					player[i].cards.add(arr[randomValue]);
+					cardList.add(randomValue);
+					cardCount++;
+				}
 			}
+			player[i].cards.print();
+			System.out.println();
 		}
 	}
+
 }
 
 class Deck1 {
